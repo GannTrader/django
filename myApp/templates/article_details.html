@@ -11,7 +11,7 @@
 {% endif %}
 </small>
 <hr>
-{{post.body}}
+{{post.body|safe}}
 
 
 <p><a href="{% url 'home' %}" class="btn btn-dark">Back</a></p>
