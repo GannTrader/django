@@ -5,15 +5,19 @@
 <h1>Delete a Blog Post</h1>
 <br />
 {% if user.is_authenticated %}
-<div class="form-group">
-  <form action="" method="POST">
-    {% csrf_token %}
-    <strong>Are you Sure?</strong>
-    <button class="btn btn-secondary">Delete</button>
-  </form>  
-</div>
+  {% if user.id == post.author.id %}
+      <div class="form-group">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <strong>Are you Sure?</strong>
+          <button class="btn btn-secondary">Delete</button>
+        </form>  
+      </div>
+  {% else %}
+  You're not allowed!
+  {% endif %}
 {% else %}
-You're not allowed!
+  You're not allowed!
 {% endif %}
 
 {% endblock %}
